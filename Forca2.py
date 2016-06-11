@@ -71,6 +71,20 @@ def nova_partida():
         if opcao >=0 and opcao <= 3:
             return opcao
         print('DESCULPE, A OPÇÃO DESEJADA É INVÁLIDADA.')
+        
+def menu_dificuldade():
+    facil = 'F'
+    dificil = 'D'
+    print('---------------------------')
+    print('         DIFICULDADE       ')
+    print('---------------------------')
+    print('F- FÁCIL')
+    print('D- DIFÍCIL')
+
+    while True:
+        opcao = str(input('OPÇÃO DESEJADA: '))
+        if opcao == facil and opcao == dificil:
+            return opcao
     
 def esconder_palavra(palavra_original):
     pass
@@ -96,19 +110,22 @@ while True:
     opcao = menu()
     
     if opcao == 1:
-        nova_partida()
-        if opcao == 1:
+        menu_dificuldade()
+                
+        if opcao == F:
             um_jogador()
-        elif opcao == 2:
-            dois_jogadores()
-        elif opcao == 3:
-            menu()
+        elif opcao == D:
+            um_jogador()
+            
 
     elif opcao == 2:
         pass
 
     elif opcao == 3:
         pass
+    
+    elif opcao == 4:
+        break
     
     elif opcao == 4:
         break
