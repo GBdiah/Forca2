@@ -1,5 +1,7 @@
 import pickle
-
+import random
+import os
+import sys
 
 lista_facil = ['melhor', 'grande', 'claro', 'azul', 'vermelho', 'preto', 'branco', 'casa', 'tempo', 'felicidade', 'bondade', 'vida',
 'caneta', 'cavalo', 'trem', 'golpe', 'cosmos']
@@ -21,6 +23,10 @@ def menu():
         if opcao >= 0 and opcao <= 4:
             return opcao
         print('DESCULPE, A OPÇÃO DESEJADA É INVÁLIDADA.')
+
+def escolher_palavra(palavra): #Escolher palavra aleatória, depois que o jogo salvo for criado, atualizar para não repetir palavra prévia
+    palavra = lista[random.randint(0,len(lista)-1)]
+    return palavra
 
 def cont_partida():
     pass
