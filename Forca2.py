@@ -96,13 +96,13 @@ def menu_dificuldade():
     
 def esconder_palavra(p_escolhida, linhas):
     for i in range(len(palavra)): # print dos underlines e das letras corretas
-        if palavra[i] in letras_corretas:
+        if palavra[i] in l_corretas:
         linhas = linhas[:i] + palavra[i] + linhas[i+1:]
         print('Palavra:', end=' ')
             for letra in linhas:
                 print(letra, end=' ')
             print(end='\n\n')
-                return  palavra_escolhida
+                return  palavra_escondida
 
 def um_jogador():
     pass
