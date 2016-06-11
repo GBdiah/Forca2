@@ -3,6 +3,8 @@ import random
 import os
 import sys
 
+l_usadas = []
+
 lista_facil = ['melhor', 'grande', 'claro', 'azul', 'vermelho', 'preto', 'branco', 'casa', 'tempo', 'felicidade', 'bondade', 'vida',
 'caneta', 'cavalo', 'trem', 'golpe', 'cosmos']
 
@@ -27,6 +29,19 @@ def menu():
 def escolher_palavra(palavra): #Escolher palavra aleatória, depois que o jogo salvo for criado, atualizar para não repetir palavra prévia
     palavra = lista[random.randint(0,len(lista)-1)]
     return palavra
+    
+def letras_usadas(l_usadas):
+    while True:
+        print('Entre uma letra (0 para sair).', vidas, ' tentativas restantes')
+        palpite = input()
+        if len(palpite) != 1:
+            print('Oi? Isso não é uma letra.')
+        elif palpite not in 'abdcefgijklmnopqrstuvwyz':
+            print('Oi? Isso não é uma letra')
+        elif palpite in l_usadas:
+            print('Letra ', palpite,' já utilizada. Tente Outra.')
+        else:
+            return palpite
 
 def cont_partida():
     pass
