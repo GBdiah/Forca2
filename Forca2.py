@@ -13,6 +13,8 @@ lista_facil = ['melhor', 'grande', 'claro', 'azul', 'vermelho', 'preto', 'branco
 lista_dificil = ['procrastinar', 'prolegomenos', 'vicissitudes', 'pernostico', 'oprobrio', 'idiossincrasia', 'elucubracoes',
 'chistoso', 'acrimonia', 'combustivel', 'concurso', 'protesto', 'governo', 'paquiderme', 'tamandare']
 
+#--------------------------------FUNÇÕES------------------------------------------#
+
 def menu():
     print('---------------------------')
     print('       JOGO DA FORCA       ')
@@ -111,6 +113,8 @@ def palavra_valida(receber_palavra):
 
 def receber_palavra(string):
    pass
+   
+#--------------------------------FUNÇÕES------------------------------------------#
 
 while True:
     opcao = menu()
