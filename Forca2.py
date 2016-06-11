@@ -3,7 +3,9 @@ import random
 import os
 import sys
 
-l_usadas = []
+l_usadas = ''
+l_corretas = ''
+l_erradas = ''
 
 lista_facil = ['melhor', 'grande', 'claro', 'azul', 'vermelho', 'preto', 'branco', 'casa', 'tempo', 'felicidade', 'bondade', 'vida',
 'caneta', 'cavalo', 'trem', 'golpe', 'cosmos']
