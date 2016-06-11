@@ -3,9 +3,7 @@ import random
 import os
 import sys
 
-l_usadas = ''
-l_corretas = ''
-l_erradas = ''
+l_usadas = []
 
 lista_facil = ['melhor', 'grande', 'claro', 'azul', 'vermelho', 'preto', 'branco', 'casa', 'tempo', 'felicidade', 'bondade', 'vida',
 'caneta', 'cavalo', 'trem', 'golpe', 'cosmos']
@@ -41,7 +39,7 @@ def letras_usadas(l_usadas): #Recebe o palpite e verifica se a letra já foi usa
         elif palpite not in 'abdcefgijklmnopqrstuvwyz':
             print('Oi? Isso não é uma letra.')
         elif palpite in l_usadas:
-            print('Letra ', palpite,' já utilizada. Tente Outra.')
+            print("Letra '", palpite,"' já utilizada. Tente Outra.")
         else:
             l_usadas.append(palpite)
             return palpite
@@ -55,6 +53,11 @@ def rank_geral():
 def sair(opcao):
     pass
 
+def limpar_tela():
+	try:
+		os.system('cls')
+	except:
+		os.system('clean')
 
 def nova_partida():
 
