@@ -37,7 +37,7 @@ def letras_usadas(l_usadas):
         if len(palpite) != 1:
             print('Oi? Isso não é uma letra.')
         elif palpite not in 'abdcefgijklmnopqrstuvwyz':
-            print('Oi? Isso não é uma letra')
+            print('Oi? Isso não é uma letra.')
         elif palpite in l_usadas:
             print('Letra ', palpite,' já utilizada. Tente Outra.')
         else:
