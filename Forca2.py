@@ -55,6 +55,12 @@ def rank_geral():
 def sair(opcao):
     pass
 
+def limpar_tela():
+	try:
+		os.system('cls')
+	except:
+		os.system('clean')
+
 
 def nova_partida():
 
