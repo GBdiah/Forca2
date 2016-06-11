@@ -43,6 +43,7 @@ def letras_usadas(l_usadas): #Recebe o palpite e verifica se a letra já foi usa
         elif palpite in l_usadas:
             print('Letra ', palpite,' já utilizada. Tente Outra.')
         else:
+            l_usadas.append(palpite)
             return palpite
 
 def cont_partida():
