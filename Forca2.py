@@ -146,5 +146,3 @@ while True:
     elif opcao == 4:
         break
     
-    elif opcao == 4:
-        break
