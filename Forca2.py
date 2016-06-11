@@ -40,7 +40,7 @@ def letras_usadas(l_usadas): #Recebe o palpite e verifica se a letra já foi usa
         palpite = input()
         if len(palpite) != 1:
             print('Oi? Isso não é uma letra.')
-        elif palpite = 0:
+        elif palpite = 0: #puxar a definição de sair do jogo
             break
         elif palpite not in 'abdcefgijklmnopqrstuvwyz':
             print('Oi? Isso não é uma letra.')
