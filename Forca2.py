@@ -30,7 +30,7 @@ def escolher_palavra(palavra): #Escolher palavra aleatória, depois que o jogo s
     palavra = lista[random.randint(0,len(lista)-1)]
     return palavra
     
-def letras_usadas(l_usadas):
+def letras_usadas(l_usadas): #Recebe o palpite e verifica se a letra já foi usado, não remove vidas, nem autentica se o palpite é correto, só verifica se ele não foi utilizado
     while True:
         print('Entre uma letra (0 para sair).', vidas, ' tentativas restantes')
         palpite = input()
