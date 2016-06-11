@@ -55,7 +55,7 @@ def rank_geral():
 def sair(opcao):
     pass
 
-def limpar_tela():
+def limpar_tela():#trolol
 	try:
 		os.system('cls')
 	except:
