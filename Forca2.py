@@ -6,7 +6,7 @@ import sys
 l_usadas = ''
 l_corretas = ''
 l_erradas = ''
-
+linhas = '_' * len(palavra_escolhida)
 lista_facil = ['melhor', 'grande', 'claro', 'azul', 'vermelho', 'preto', 'branco', 'casa', 'tempo', 'felicidade', 'bondade', 'vida',
 'caneta', 'cavalo', 'trem', 'golpe', 'cosmos']
 
@@ -40,8 +40,6 @@ def letras_usadas(l_usadas): #Recebe o palpite e verifica se a letra já foi usa
         palpite = input()
         if len(palpite) != 1:
             print('Oi? Isso não é uma letra.')
-        elif palpite = 0: #puxar a definição de sair do jogo
-            break
         elif palpite not in 'abdcefgijklmnopqrstuvwyz':
             print('Oi? Isso não é uma letra.')
         elif palpite in l_usadas:
@@ -96,15 +94,24 @@ def menu_dificuldade():
         if opcao == facil and opcao == dificil:
             return opcao
     
-def esconder_palavra(palavra_original):
-    pass
+def esconder_palavra(p_escolhida, linhas):
+    for i in range(len(palavra)): # print dos underlines e das letras corretas
+        if palavra[i] in letras_corretas:
+        linhas = linhas[:i] + palavra[i] + linhas[i+1:]
+        print('Palavra:', end=' ')
+            for letra in linhas:
+                print(letra, end=' ')
+            print(end='\n\n')
+                return  palavra_escolhida
 
 def um_jogador():
     pass
 
 def dois_jogadores():
     pass
-
+'''
+--------------DOIS JOGADORES ----------------
+'''
 def palavra_valida(receber_palavra):
     valida = True
     for caractere in string:
