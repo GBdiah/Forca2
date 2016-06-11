@@ -7,6 +7,7 @@ l_usadas = ''
 l_corretas = ''
 l_erradas = ''
 linhas = '_' * len(palavra_escolhida)
+
 lista_facil = ['melhor', 'grande', 'claro', 'azul', 'vermelho', 'preto', 'branco', 'casa', 'tempo', 'felicidade', 'bondade', 'vida',
 'caneta', 'cavalo', 'trem', 'golpe', 'cosmos']
 
@@ -105,7 +106,14 @@ def esconder_palavra(p_escolhida, linhas):
                 return  palavra_escondida
 
 def um_jogador():
-    pass
+     while jogo_completo == False:
+         escolher_palavra(palavra)
+         esconder_palavra(palavra)
+          print('Letras já utilizadas:', end=' ') # print das letras utilizadas
+            for i in range(0, len(l_usadas)):
+                print(l_usadas[i], end=' ')
+            print(end='\n\n')
+            
 
 def dois_jogadores():
     pass
@@ -132,8 +140,11 @@ while True:
         menu_dificuldade()
                 
         if opcao == F:
+            vidas = 5
+            lista = lista_facil
             um_jogador()
         elif opcao == D:
+            vidas = 3
             um_jogador()
             
 
@@ -146,3 +157,5 @@ while True:
     elif opcao == 4:
         break
     
+    elif opcao == 4:
+        break
