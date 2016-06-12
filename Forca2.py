@@ -55,7 +55,6 @@ def letras_usadas(l_usadas): #Recebe o palpite e verifica se a letra já foi usa
             
 def adicionar_recorde(nome, pontuacao):#Ela verifica se é recorde ou não, e se for inclui na lista
     recorde = _carregar_recorde()
-    
     posicao = posicao_recorde(ranking, pontuacao)
     if posicao < numero_recorde:
         ranking = {_nome:nome, _pontuacao:pontuacao}
