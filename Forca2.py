@@ -142,21 +142,51 @@ def receber_palavra(string):
    
 #--------------------------------FUNÇÕES------------------------------------------#
 
-sair = False
-while (not sair):
+while True:
     opcao = menu()
-
+    
     if opcao == 1:
-        voltar = False
-        while (not voltar):
-            opcao = nova_partida()
-            if opcao == 1:
-                opcao = menu_dificuldade()
-            if opcao == 3:
-                voltar = True
+        nova_partida()
+        if opcao == 1:
+            menu_dificuldade()
+            if opcao == F:
+                vidas = 5
+                lista = lista_facil
+                um_jogador(palavra)
+            elif opcao == D:
+                vidas = 3
+                lista = lista_dificil
+                um_jogador(palavra)
+        elif opcao == 2:
+            pass
+        elif opcao == 3:
+            menu()
+            
+
     elif opcao == 2:
-        cont_partida()
+        pass
+
     elif opcao == 3:
-        ranking()
+        pass
+    
     elif opcao == 4:
-        sair = True
+        break
+
+if palpite in palavra: #Verifica se o palpite está na palavra, falta implementar a parte em que mostra as letras já utilizadas e a palavra em sí. PS. criei a varíavel joao só pela zuera
+    letras_corretas.append(palpite)
+    acertoupalavra = True
+    for i in range(len(palavra)):
+        if palavra[i] not in letras_corretas:
+            acertoupalavra = False
+            break
+        if acertoupalavra:
+            print('Parabéns! Você ganhou. A palavra era ', palavra,'. Pressione enter para continuar...')
+            jogo_completo = True
+        else:
+            print('Letra ', palpite, 'não existe na palavra :(')
+            letras_erradas.append(palpite)
+            (joao-1)
+            
+            if joao = 0
+            print('Jogo encerrado. Você perdeu. A palavra era ', palavra,'.Pressione enter para continuar...')
+            jogo_completo = True
