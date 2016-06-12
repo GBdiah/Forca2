@@ -103,7 +103,7 @@ def menu_dificuldade():#Leia comentário nova_partida
         if opcao == facil and opcao == dificil:
             return opcao
     
-def esconder_palavra(p_escolhida, linhas): # AJEITAR A IDENTAÇÃO
+def esconder_palavra(p_escolhida, linhas):
     for i in range(len(palavra)): # print dos underlines e das letras corretas
         if palavra[i] in l_corretas:
             linhas = linhas[:i] + palavra[i] + linhas[i+1:]
