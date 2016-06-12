@@ -149,13 +149,16 @@ def receber_palavra(string):
 sair = False
 while (not sair):
     opcao = menu()
+    limpar_tela()
 
     if opcao == 1:
         voltar = False
         while (not voltar):
             opcao = nova_partida()
+            limpar_tela()
             if opcao == 1:
                 opcao = menu_dificuldade()
+                limpar_tela()
                 if opcao == 'F':
                     vidas = 5
                     lista = lista_facil
