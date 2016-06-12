@@ -44,11 +44,11 @@ def letras_usadas(l_usadas): #Recebe o palpite e verifica se a letra já foi usa
         print('Entre uma letra (0 para sair).', vidas, ' tentativas restantes')
         palpite = input()
         if len(palpite) != 1:
-            print('Oi? Isso não é uma letra.')
+            print('Oi? Isso não é uma letra.', end='\n\n')
         elif palpite not in 'abdcefgijklmnopqrstuvwyz':
-            print('Oi? Isso não é uma letra.')
+            print('Oi? Isso não é uma letra.', end='\n\n')
         elif palpite in l_usadas:
-            print('Letra ', palpite,' já utilizada. Tente Outra.')
+            print("Letra '", palpite,"' já utilizada. Tente Outra.", sep='', end='\n\n')
         else:
             l_usadas.append(palpite)
             return palpite
@@ -106,22 +106,22 @@ def menu_dificuldade():#Leia comentário nova_partida
 def esconder_palavra(p_escolhida, linhas): # AJEITAR A IDENTAÇÃO
     for i in range(len(palavra)): # print dos underlines e das letras corretas
         if palavra[i] in l_corretas:
-        linhas = linhas[:i] + palavra[i] + linhas[i+1:]
+            linhas = linhas[:i] + palavra[i] + linhas[i+1:]
         print('Palavra:', end=' ')
-            for letra in linhas:
-                print(letra, end=' ')
-            print(end='\n\n')
-                return  palavra_escondida
+    for letra in linhas:
+        print(letra, end=' ')
+    print(end='\n\n')
+    return  palavra_escondida
 
-def um_jogador(palavra):#incompleto --- AJEITAR A IDENTAÇÃO
-     while jogo_completo == False:
-         escolher_palavra(palavra)
-         esconder_palavra(palavra)
-          print('Letras já utilizadas:', end=' ') # print das letras utilizadas
-            for i in range(0, len(l_usadas)):
-                print(l_usadas[i], end=' ')
-            print(end='\n\n')
-            
+def um_jogador(palavra):#incompleto
+    while jogo_completo == False:
+        escolher_palavra(palavra)
+        print('Letras já utilizadas:', end=' ') # print das letras utilizadas
+        for i in range(0, len(l_usadas)):
+            print(l_usadas[i], end=' ')
+        print(end='\n\n')
+        
+        esconder_palavra(palavra, linhas)    
 
 def dois_jogadores():
     pass
