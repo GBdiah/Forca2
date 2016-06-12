@@ -7,10 +7,11 @@ numero_recordes = 10
 arquivo_recorde = "recorde.txt"
 nome = 'nome'
 pontuacao = 'pontuacao'
-l_usadas = ''
-l_corretas = ''
-l_erradas = ''
+l_usadas = []
+l_corretas = []
+l_erradas = []
 linhas = '_' * len(palavra_escolhida)
+palavra = ''
 
 lista_facil = ['melhor', 'grande', 'claro', 'azul', 'vermelho', 'preto', 'branco', 'casa', 'tempo', 'felicidade', 'bondade', 'vida',
 'caneta', 'cavalo', 'trem', 'golpe', 'cosmos']
