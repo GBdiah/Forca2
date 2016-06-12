@@ -172,7 +172,7 @@ while True:
     elif opcao == 4:
         break
 
-if palpite in palavra: #Verifica se o palpite está na palavra, falta implementar a parte em que mostra as letras já utilizadas e a palavra em sí. PS. criei a varíavel joao só pela zuera
+if palpite in palavra: #!!!IMPORTANTE, ISSO É A BASE DO JOGO SINGLEPLAYER IMAGINO Q PODE SER APROVEITADO EM PARTE PRO MULTI!!!Verifica se o palpite está na palavra, falta implementar a parte em que mostra as letras já utilizadas e a palavra em sí. PS. criei a varíavel joao só pela zuera
     letras_corretas.append(palpite)
     acertoupalavra = True
     for i in range(len(palavra)):
