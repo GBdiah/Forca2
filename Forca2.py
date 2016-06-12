@@ -152,11 +152,11 @@ while (not sair):
             opcao = nova_partida()
             if opcao == 1:
                 opcao = menu_dificuldade()
-                if opcao == F:
+                if opcao == 'F':
                     vidas = 5
                     lista = lista_facil
                     um_jogador()
-                elif opcao == D:
+                elif opcao == 'D':
                     vidas = 3
                     lista = lista_dificil
                     um_jogador()
