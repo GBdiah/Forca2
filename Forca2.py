@@ -5,8 +5,8 @@ import sys
 
 numero_recordes = 10
 arquivo_recorde = "recorde.txt"
-_nome = 'nome'
-_pontuacao = 'pontuacao'
+nome = 'nome'
+pontuacao = 'pontuacao'
 l_usadas = ''
 l_corretas = ''
 l_erradas = ''
@@ -53,15 +53,10 @@ def letras_usadas(l_usadas): #Recebe o palpite e verifica se a letra já foi usa
             l_usadas.append(palpite)
             return palpite
             
-def adicionar_recorde(nome, pontuacao):#Ela verifica se é recorde ou não, e se for inclui na lista
-    recorde = _carregar_recorde()
-    posicao = posicao_recorde(ranking, pontuacao)
-    if posicao < numero_recorde:
-        ranking = {_nome:nome, _pontuacao:pontuacao}
-        recirde.insert(posicao, ranking)
-        recorde = recorde [:numero_recorde]
-        salvar_recorde(recorde)
-
+def de_novo(palavra):
+    input('Pressione ENTER para continuar...')
+    um_jogador(palavra)
+    
 def cont_partida():
     pass
 
@@ -118,7 +113,7 @@ def esconder_palavra(p_escolhida, linhas):
             print(end='\n\n')
                 return  palavra_escondida
 
-def um_jogador():#incompleto
+def um_jogador(palavra):#incompleto
      while jogo_completo == False:
          escolher_palavra(palavra)
          esconder_palavra(palavra)
@@ -155,10 +150,11 @@ while True:
         if opcao == F:
             vidas = 5
             lista = lista_facil
-            um_jogador()
+            um_jogador(palavra)
         elif opcao == D:
             vidas = 3
-            um_jogador()
+            lista = lista_dificil
+            um_jogador(palavra)
             
 
     elif opcao == 2:
