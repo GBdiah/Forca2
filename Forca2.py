@@ -3,6 +3,8 @@ import random
 import os
 import sys
 
+numero_recordes = 10
+arquivo_recorde = "recorde.txt"
 l_usadas = ''
 l_corretas = ''
 l_erradas = ''
