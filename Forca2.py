@@ -5,8 +5,8 @@ import sys
 
 numero_recordes = 10
 arquivo_recorde = "recorde.txt"
-nome = 'nome'
-pontuacao = 'pontuacao'
+_nome = 'nome'
+_pontuacao = 'pontuacao'
 l_usadas = ''
 l_corretas = ''
 l_erradas = ''
@@ -53,7 +53,15 @@ def letras_usadas(l_usadas): #Recebe o palpite e verifica se a letra já foi usa
             l_usadas.append(palpite)
             return palpite
             
-def
+def adicionar_recorde(nome, pontuacao):#Ela verifica se é recorde ou não, e se for inclui na lista
+    recorde = _carregar_recorde()
+    
+    posicao = posicao_recorde(ranking, pontuacao)
+    if posicao < numero_recorde:
+        ranking = {_nome:nome, _pontuacao:pontuacao}
+        recirde.insert(posicao, ranking)
+        recorde = recorde [:numero_recorde]
+        salvar_recorde(recorde)
 
 def cont_partida():
     pass
