@@ -103,7 +103,7 @@ def menu_dificuldade():#Leia comentário nova_partida
         if opcao == facil and opcao == dificil:
             return opcao
     
-def esconder_palavra(p_escolhida, linhas):
+def esconder_palavra(p_escolhida, linhas): # AJEITAR A IDENTAÇÃO
     for i in range(len(palavra)): # print dos underlines e das letras corretas
         if palavra[i] in l_corretas:
         linhas = linhas[:i] + palavra[i] + linhas[i+1:]
@@ -113,7 +113,7 @@ def esconder_palavra(p_escolhida, linhas):
             print(end='\n\n')
                 return  palavra_escondida
 
-def um_jogador(palavra):#incompleto
+def um_jogador(palavra):#incompleto --- AJEITAR A IDENTAÇÃO
      while jogo_completo == False:
          escolher_palavra(palavra)
          esconder_palavra(palavra)
@@ -167,9 +167,6 @@ while True:
 
     elif opcao == 3:
         pass
-    
-    elif opcao == 4:
-        break
     
     elif opcao == 4:
         break
