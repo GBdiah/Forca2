@@ -3,8 +3,6 @@ import random
 import os
 import sys
 
-numero_recordes = 10
-arquivo_recorde = "recorde.txt"
 l_usadas = ''
 l_corretas = ''
 l_erradas = ''
@@ -107,7 +105,7 @@ def esconder_palavra(p_escolhida, linhas):
             print(end='\n\n')
                 return  palavra_escondida
 
-def um_jogador():#incompleto
+def um_jogador():
      while jogo_completo == False:
          escolher_palavra(palavra)
          esconder_palavra(palavra)
@@ -136,28 +134,31 @@ def receber_palavra(string):
 #--------------------------------FUNÇÕES------------------------------------------#
 
 while True:
-    opcao = menu()
+    menu()
     
     if opcao == 1:
-        menu_dificuldade()
-                
-        if opcao == F:
-            vidas = 5
-            lista = lista_facil
-            um_jogador()
-        elif opcao == D:
-            vidas = 3
-            um_jogador()
-            
+        nova_partida()
+            if opcao == 1:
+                menu_dificuldade()
+                        
+                if opcao == F:
+                    vidas = 5
+                    lista = lista_facil
+                    um_jogador()
+                elif opcao == D:
+                    vidas = 3
+                    um_jogador()
+            if opcao == 2:
+                dois_jogadores()
+            if opcao == 3:
+                menu()
 
     elif opcao == 2:
-        pass
+        cont_partida()
 
     elif opcao == 3:
-        pass
+        ranking()
     
-    elif opcao == 4:
-        break
-    
+
     elif opcao == 4:
         break
