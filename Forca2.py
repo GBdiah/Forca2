@@ -145,16 +145,21 @@ while True:
     opcao = menu()
     
     if opcao == 1:
-        menu_dificuldade()
-                
-        if opcao == F:
-            vidas = 5
-            lista = lista_facil
-            um_jogador(palavra)
-        elif opcao == D:
-            vidas = 3
-            lista = lista_dificil
-            um_jogador(palavra)
+        nova_partida()
+        if opcao == 1:
+            menu_dificuldade()
+            if opcao == F:
+                vidas = 5
+                lista = lista_facil
+                um_jogador(palavra)
+            elif opcao == D:
+                vidas = 3
+                lista = lista_dificil
+                um_jogador(palavra)
+        elif opcao == 2:
+            pass
+        elif opcao == 3:
+            menu()
             
 
     elif opcao == 2:
