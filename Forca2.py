@@ -146,35 +146,32 @@ def receber_palavra(string):
    
 #--------------------------------FUNÇÕES------------------------------------------#
 
-while True:
+sair = False
+while (not sair):
     opcao = menu()
-    
+
     if opcao == 1:
-        nova_partida()
-        if opcao == 1:
-            menu_dificuldade()
-            if opcao == F:
-                vidas = 5
-                lista = lista_facil
-                um_jogador(palavra)
-            elif opcao == D:
-                vidas = 3
-                lista = lista_dificil
-                um_jogador(palavra)
-        elif opcao == 2:
-            pass
-        elif opcao == 3:
-            menu()
-            
-
+        voltar = False
+        while (not voltar):
+            opcao = nova_partida()
+            if opcao == 1:
+                opcao = menu_dificuldade()
+                if opcao == 'F':
+                    vidas = 5
+                    lista = lista_facil
+                    um_jogador()
+                elif opcao == 'D':
+                    vidas = 3
+                    lista = lista_dificil
+                    um_jogador()
+            if opcao == 3:
+                voltar = True
     elif opcao == 2:
-        pass
-
+        cont_partida()
     elif opcao == 3:
-        pass
-    
+        ranking()
     elif opcao == 4:
-        break
+        sair = True
 
 if palpite in palavra: #!!!IMPORTANTE, ISSO É A BASE DO JOGO SINGLEPLAYER IMAGINO Q PODE SER APROVEITADO EM PARTE PRO MULTI!!!Verifica se o palpite está na palavra, falta implementar a parte em que mostra as letras já utilizadas e a palavra em sí. PS. criei a varíavel joao só pela zuera
     letras_corretas.append(palpite)
