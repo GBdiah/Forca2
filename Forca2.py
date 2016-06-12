@@ -3,6 +3,10 @@ import random
 import os
 import sys
 
+numero_recordes = 10
+arquivo_recorde = "recorde.txt"
+nome = 'nome'
+pontuacao = 'pontuacao'
 l_usadas = ''
 l_corretas = ''
 l_erradas = ''
@@ -48,6 +52,8 @@ def letras_usadas(l_usadas): #Recebe o palpite e verifica se a letra já foi usa
         else:
             l_usadas.append(palpite)
             return palpite
+            
+def
 
 def cont_partida():
     pass
@@ -105,7 +111,7 @@ def esconder_palavra(p_escolhida, linhas):
             print(end='\n\n')
                 return  palavra_escondida
 
-def um_jogador():
+def um_jogador():#incompleto
      while jogo_completo == False:
          escolher_palavra(palavra)
          esconder_palavra(palavra)
@@ -134,31 +140,28 @@ def receber_palavra(string):
 #--------------------------------FUNÇÕES------------------------------------------#
 
 while True:
-    menu()
+    opcao = menu()
     
     if opcao == 1:
-        nova_partida()
-            if opcao == 1:
-                menu_dificuldade()
-                        
-                if opcao == F:
-                    vidas = 5
-                    lista = lista_facil
-                    um_jogador()
-                elif opcao == D:
-                    vidas = 3
-                    um_jogador()
-            if opcao == 2:
-                dois_jogadores()
-            if opcao == 3:
-                menu()
+        menu_dificuldade()
+                
+        if opcao == F:
+            vidas = 5
+            lista = lista_facil
+            um_jogador()
+        elif opcao == D:
+            vidas = 3
+            um_jogador()
+            
 
     elif opcao == 2:
-        cont_partida()
+        pass
 
     elif opcao == 3:
-        ranking()
+        pass
     
-
+    elif opcao == 4:
+        break
+    
     elif opcao == 4:
         break
