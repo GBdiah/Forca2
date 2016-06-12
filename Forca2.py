@@ -105,7 +105,7 @@ def esconder_palavra(p_escolhida, linhas):
             print(end='\n\n')
                 return  palavra_escondida
 
-def um_jogador():
+def um_jogador():#incompleto
      while jogo_completo == False:
          escolher_palavra(palavra)
          esconder_palavra(palavra)
