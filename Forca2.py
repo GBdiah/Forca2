@@ -35,6 +35,10 @@ def menu():
         if opcao >= 0 and opcao <= 4:
             return opcao
         print('DESCULPE, A OPÇÃO DESEJADA É INVÁLIDADA.')
+        
+def jogar_denovo(): #Função de jogar denovo, como já dito lá embaixo, falta ainda implementar a pontuação para carregar pros próximos jogos
+    print ('Parabéns! Você ganhou. A palavra era ', palavra,'. Pressione enter para continuar...')
+    return input().startswitch('')
 
 def escolher_palavra(palavra): #Escolher palavra aleatória, depois que o jogo salvo for criado, atualizar para não repetir palavra prévia
     palavra = lista[random.randint(0,len(lista)-1)]
@@ -114,7 +118,7 @@ def esconder_palavra(p_escolhida, linhas):
     print(end='\n\n')
     return  palavra_escondida
 
-def um_jogador(palavra, lista, vidas):#incompleto
+def um_jogador(palavra):#incompleto
     while jogo_completo == False:
         escolher_palavra(palavra)
         print('Letras já utilizadas:', end=' ') # print das letras utilizadas
@@ -122,7 +126,7 @@ def um_jogador(palavra, lista, vidas):#incompleto
             print(l_usadas[i], end=' ')
         print(end='\n\n')
         
-        esconder_palavra(palavra, linhas,  vidas)       
+        esconder_palavra(palavra, linhas)    
 
 def dois_jogadores():
     pass
@@ -142,32 +146,35 @@ def receber_palavra(string):
    
 #--------------------------------FUNÇÕES------------------------------------------#
 
-sair = False
-while (not sair):
+while True:
     opcao = menu()
-
+    
     if opcao == 1:
-        voltar = False
-        while (not voltar):
-            opcao = nova_partida()
-            if opcao == 1:
-                opcao = menu_dificuldade()
-                if opcao == 'F':
-                    vidas = 5
-                    lista = lista_facil
-                    um_jogador()
-                elif opcao == 'D':
-                    vidas = 3
-                    lista = lista_dificil
-                    um_jogador()
-            if opcao == 3:
-                voltar = True
+        nova_partida()
+        if opcao == 1:
+            menu_dificuldade()
+            if opcao == F:
+                vidas = 5
+                lista = lista_facil
+                um_jogador(palavra)
+            elif opcao == D:
+                vidas = 3
+                lista = lista_dificil
+                um_jogador(palavra)
+        elif opcao == 2:
+            pass
+        elif opcao == 3:
+            menu()
+            
+
     elif opcao == 2:
-        cont_partida()
+        pass
+
     elif opcao == 3:
-        ranking()
+        pass
+    
     elif opcao == 4:
-        sair = True
+        break
 
 if palpite in palavra: #!!!IMPORTANTE, ISSO É A BASE DO JOGO SINGLEPLAYER IMAGINO Q PODE SER APROVEITADO EM PARTE PRO MULTI!!!Verifica se o palpite está na palavra, falta implementar a parte em que mostra as letras já utilizadas e a palavra em sí. PS. criei a varíavel joao só pela zuera
     letras_corretas.append(palpite)
@@ -187,3 +194,12 @@ if palpite in palavra: #!!!IMPORTANTE, ISSO É A BASE DO JOGO SINGLEPLAYER IMAGI
             if joao = 0
             print('Jogo encerrado. Você perdeu. A palavra era ', palavra,'.Pressione enter para continuar...')
             jogo_completo = True
+    if jogo_completo: #Falta implementar a pontuação, falta também salvar a palavra já usada, para não se repita durante eventual continuação
+        if jogar_denovo():
+            letras_usadas = []
+            letras_corretas = []
+            letras_erradas = []
+            jogo_completo = False
+            palvra = escolherpalavra(palavra)
+        else:
+            break
