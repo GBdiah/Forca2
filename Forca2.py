@@ -73,7 +73,7 @@ def limpar_tela():
         os.system('clean')
 
 
-def nova_partida():
+def nova_partida():#Lembrar de passar a informação de quantos jogadores são, número de vida, lista de palavras selecionadas, e pontuação a ser dada(se um jogador).
 
 
     print('---------------------------')
@@ -89,7 +89,7 @@ def nova_partida():
             return opcao
         print('DESCULPE, A OPÇÃO DESEJADA É INVÁLIDADA.')
         
-def menu_dificuldade():
+def menu_dificuldade():#Leia comentário nova_partida
     facil = 'F'
     dificil = 'D'
     print('---------------------------')
