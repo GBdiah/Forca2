@@ -52,6 +52,7 @@ def salvar_ranking():
     
 def obter_ranking(): # A ser utilizado quando o usuário quiser acessar direto do menu, falta dar o print com o menu em sí
     return carregar_ranking
+    
 def jogar_denovo(): #Função de jogar denovo, como já dito lá embaixo, falta ainda implementar a pontuação para carregar pros próximos jogos
     print ('Parabéns! Você ganhou. A palavra era ', palavra,'. Pressione enter para continuar...')
     return input().startswitch('')
