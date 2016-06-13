@@ -21,6 +21,14 @@ lista_dificil = ['procrastinar', 'prolegomenos', 'vicissitudes', 'pernostico', '
 'chistoso', 'acrimonia', 'combustivel', 'concurso', 'protesto', 'governo', 'paquiderme', 'tamandare']
 
 #--------------------------------FUNÇÕES------------------------------------------#
+def verificar_recorde(pontuacao): #verifica a pontuação do cara e onde ele será inserido no ranking
+    posicao_recorde = 0
+    if pontuacao > 0:
+        ranking = carregar_ranking()
+        posicao = posicao_recorde(ranking, pontuacao)
+        if posicao < numero_recordes:
+            posicao_recorde = posicao + 1
+        
 def inserir_recorde(nome, pontuacao):
     ranking = carregar_ranking()
     
