@@ -20,6 +20,19 @@ lista_dificil = ['procrastinar', 'prolegomenos', 'vicissitudes', 'pernostico', '
 'chistoso', 'acrimonia', 'combustivel', 'concurso', 'protesto', 'governo', 'paquiderme', 'tamandare']
 
 #--------------------------------FUNÇÕES------------------------------------------#
+def jogar_denovo(): #Função de jogar denovo, como já dito lá embaixo, falta ainda implementar a pontuação para carregar pros próximos jogos
+    print ('Parabéns! Você ganhou. A palavra era ', palavra,'. Pressione enter para continuar...')
+    return input().startswitch('')
+
+def escolher_palavra(palavra): #Escolher palavra aleatória, depois que o jogo salvo for criado, atualizar para não repetir palavra prévia
+    palavra = lista[random.randint(0,len(lista)-1)]
+    return palavra
+    
+def limpar_tela():
+    try:
+        os.system('cls')
+    except:
+        os.system('clean')
 
 def menu():
     print('---------------------------')
@@ -36,13 +49,39 @@ def menu():
             return opcao
         print('DESCULPE, A OPÇÃO DESEJADA É INVÁLIDADA.')
         
-def jogar_denovo(): #Função de jogar denovo, como já dito lá embaixo, falta ainda implementar a pontuação para carregar pros próximos jogos
-    print ('Parabéns! Você ganhou. A palavra era ', palavra,'. Pressione enter para continuar...')
-    return input().startswitch('')
+def nova_partida():
+    '''
+    Lembrar de passar a informação de quantos jogadores são, número de vida,
+    lista de palavras selecionadas, e pontuação a ser dada(se um jogador).
+    '''
+    print('---------------------------')
+    print('        NOVA PARTIDA       ')
+    print('---------------------------')
+    print('1- UM JOGADOR')
+    print('2- DOIS JOGADORES')
+    print('3- VOLTAR')
 
-def escolher_palavra(palavra): #Escolher palavra aleatória, depois que o jogo salvo for criado, atualizar para não repetir palavra prévia
-    palavra = lista[random.randint(0,len(lista)-1)]
-    return palavra
+    while True:    
+        opcao = int(input('OPÇÃO DESEJADA: '))
+        if opcao >=0 and opcao <= 3:
+            return opcao
+        print('DESCULPE, A OPÇÃO DESEJADA É INVÁLIDADA.')
+
+def menu_dificuldade():#Leia comentário nova_partida
+    facil = 'F'
+    dificil = 'D'
+    print('---------------------------')
+    print('         DIFICULDADE       ')
+    print('---------------------------')
+    print('F- FÁCIL')
+    print('D- DIFÍCIL')
+
+    while True:
+        opcao = str(input('OPÇÃO DESEJADA: '))
+        if opcao == facil and opcao == dificil:
+            return opcao        
+
+
     
 def letras_usadas(l_usadas): #Recebe o palpite e verifica se a letra já foi usado, não remove vidas, nem autentica se o palpite é correto, só verifica se ele não foi utilizado
     while True:
@@ -62,6 +101,8 @@ def de_novo(palavra):
     input('Pressione ENTER para continuar...')
     um_jogador(palavra)
     
+
+    
 def cont_partida():
     pass
 
@@ -71,43 +112,7 @@ def rank_geral():
 def sair(opcao):
     pass
 
-def limpar_tela():
-    try:
-        os.system('cls')
-    except:
-        os.system('clean')
 
-
-def nova_partida():#Lembrar de passar a informação de quantos jogadores são, número de vida, lista de palavras selecionadas, e pontuação a ser dada(se um jogador).
-
-
-    print('---------------------------')
-    print('        NOVA PARTIDA       ')
-    print('---------------------------')
-    print('1- UM JOGADOR')
-    print('2- DOIS JOGADORES')
-    print('3- VOLTAR')
-
-    while True:    
-        opcao = int(input('OPÇÃO DESEJADA: '))
-        if opcao >=0 and opcao <= 3:
-            return opcao
-        print('DESCULPE, A OPÇÃO DESEJADA É INVÁLIDADA.')
-        
-def menu_dificuldade():#Leia comentário nova_partida
-    facil = 'F'
-    dificil = 'D'
-    print('---------------------------')
-    print('         DIFICULDADE       ')
-    print('---------------------------')
-    print('F- FÁCIL')
-    print('D- DIFÍCIL')
-
-    while True:
-        opcao = str(input('OPÇÃO DESEJADA: '))
-        if opcao == facil and opcao == dificil:
-            return opcao
-    
 def esconder_palavra(p_escolhida, linhas):
     for i in range(len(palavra)): # print dos underlines e das letras corretas
         if palavra[i] in l_corretas:
