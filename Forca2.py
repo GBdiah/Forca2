@@ -11,6 +11,7 @@ sorteadas = []
 l_usadas = []
 l_corretas = []
 l_erradas = []
+p_usadas = []
 linhas = '_' * len(palavra_escolhida)
 palavra = ''
 
