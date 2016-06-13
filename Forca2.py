@@ -41,6 +41,14 @@ def carregar_ranking(): #Carregar o ranking do arquivo contendo o mapa dos ranki
         pass
     return ranking
     
+def salvar_ranking():
+    try:
+        arquivo = open(arquivo_recorde, "wb")
+        pickle.dump(ranking, arquivo)
+        arquivo.close()
+    except:
+        pass
+    
 def jogar_denovo(): #Função de jogar denovo, como já dito lá embaixo, falta ainda implementar a pontuação para carregar pros próximos jogos
     print ('Parabéns! Você ganhou. A palavra era ', palavra,'. Pressione enter para continuar...')
     return input().startswitch('')
