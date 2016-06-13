@@ -224,7 +224,7 @@ def um_jogador(palavra):#incompleto
                     palvra = escolherpalavra(palavra)
                 else:
                     break
-    return #tem que ver o que vai ser retornado    
+    return #tem que ver o que vai ser retornado // Imagino que a pontuacao seria o retorno dessa funcao n?    
 
 def dois_jogadores():
     pass
