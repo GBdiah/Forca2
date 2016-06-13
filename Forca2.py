@@ -21,6 +21,16 @@ lista_dificil = ['procrastinar', 'prolegomenos', 'vicissitudes', 'pernostico', '
 'chistoso', 'acrimonia', 'combustivel', 'concurso', 'protesto', 'governo', 'paquiderme', 'tamandare']
 
 #--------------------------------FUNÇÕES------------------------------------------#
+def inserir_recorde(nome, pontuacao):
+    ranking = carregar_ranking()
+    
+    posicao = posicao_recorde(ranking, pontuacao)
+    if posicao < numero_recorde:
+        recorde = {_nome:nome, _pontuacao:pontuacao}
+        ranking.insert(posicao, recorde)
+        ranking = ranking[:numero_recorde]
+        salvar_ranking(ranking)
+        
 def jogar_denovo(): #Função de jogar denovo, como já dito lá embaixo, falta ainda implementar a pontuação para carregar pros próximos jogos
     print ('Parabéns! Você ganhou. A palavra era ', palavra,'. Pressione enter para continuar...')
     return input().startswitch('')
