@@ -94,10 +94,12 @@ def menu_dificuldade():#Leia comentário nova_partida
 
 
     
-def letras_usadas(l_usadas): #Recebe o palpite e verifica se a letra já foi usado, não remove vidas, nem autentica se o palpite é correto, só verifica se ele não foi utilizado
+def pegar_palpite(l_usadas): #Recebe o palpite e verifica se a letra já foi usado, não remove vidas, nem autentica se o palpite é correto, só verifica se ele não foi utilizado
     while True:
         print('Entre uma letra (0 para sair).', vidas, ' tentativas restantes')
-        palpite = input()
+        palpite = input('> ')
+        print()
+        
         if len(palpite) != 1:
             print('Oi? Isso não é uma letra.', end='\n\n')
         elif palpite not in 'abdcefgijklmnopqrstuvwyzx':
