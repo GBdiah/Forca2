@@ -30,7 +30,17 @@ def inserir_recorde(nome, pontuacao):
         ranking.insert(posicao, recorde)
         ranking = ranking[:numero_recorde]
         salvar_ranking(ranking)
-        
+def carregar_ranking(): #Carregar o ranking do arquivo contendo o mapa dos rankings
+    ranking = []
+    
+    try:
+        arquivo = open(arquivo_recorde, "rb")
+        ranking = pickle.load(arq)
+        arquivo.close()
+    except:
+        pass
+    return ranking
+    
 def jogar_denovo(): #Função de jogar denovo, como já dito lá embaixo, falta ainda implementar a pontuação para carregar pros próximos jogos
     print ('Parabéns! Você ganhou. A palavra era ', palavra,'. Pressione enter para continuar...')
     return input().startswitch('')
@@ -94,12 +104,10 @@ def menu_dificuldade():#Leia comentário nova_partida
 
 
     
-def pegar_palpite(l_usadas): #Recebe o palpite e verifica se a letra já foi usado, não remove vidas, nem autentica se o palpite é correto, só verifica se ele não foi utilizado
+def letras_usadas(l_usadas): #Recebe o palpite e verifica se a letra já foi usado, não remove vidas, nem autentica se o palpite é correto, só verifica se ele não foi utilizado
     while True:
         print('Entre uma letra (0 para sair).', vidas, ' tentativas restantes')
-        palpite = input('> ')
-        print()
-        
+        palpite = input()
         if len(palpite) != 1:
             print('Oi? Isso não é uma letra.', end='\n\n')
         elif palpite not in 'abdcefgijklmnopqrstuvwyzx':
