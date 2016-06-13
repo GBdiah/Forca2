@@ -30,25 +30,7 @@ def inserir_recorde(nome, pontuacao):
         ranking.insert(posicao, recorde)
         ranking = ranking[:numero_recorde]
         salvar_ranking(ranking)
-def carregar_ranking(): #Carregar o ranking do arquivo contendo o mapa dos rankings
-    ranking = []
-    
-    try:
-        arquivo = open(arquivo_recorde, "rb")
-        ranking = pickle.load(arq)
-        arquivo.close()
-    except:
-        pass
-    return ranking
-    
-def salvar_ranking():
-    try:
-        arquivo = open(arquivo_recorde, "wb")
-        pickle.dump(ranking, arquivo)
-        arquivo.close()
-    except:
-        pass
-    
+        
 def jogar_denovo(): #Função de jogar denovo, como já dito lá embaixo, falta ainda implementar a pontuação para carregar pros próximos jogos
     print ('Parabéns! Você ganhou. A palavra era ', palavra,'. Pressione enter para continuar...')
     return input().startswitch('')
@@ -118,13 +100,13 @@ def letras_usadas(l_usadas): #Recebe o palpite e verifica se a letra já foi usa
         palpite = input()
         if len(palpite) != 1:
             print('Oi? Isso não é uma letra.', end='\n\n')
-        elif palpite not in 'abdcefgijklmnopqrstuvwyzx':
+        elif palpite not in 'abdcefgijklmnopqrstuvwyz':
             print('Oi? Isso não é uma letra.', end='\n\n')
         elif palpite in l_usadas:
             print("Letra '", palpite,"' já utilizada. Tente Outra.", sep='', end='\n\n')
         else:
             l_usadas.append(palpite)
-        return palpite
+            return palpite
             
 def de_novo(palavra):
     input('Pressione ENTER para continuar...')
@@ -137,7 +119,13 @@ def sorteia(lista, sorteadas):
             sorteadas.append(indice)
         return (palavra)
     
-
+def salvar_partida(um_jogador):#CONCLUIR MAIS TARDE
+    arquivo = open("jogo", "w")
+    
+    for jogo in um_jogador:
+        arquivo.write(vidas, l_usadas, lista, l_corretas, l_erradas)
+        
+    arquivo.close()
     
 def cont_partida():
     pass
