@@ -5,8 +5,8 @@ import sys
 
 numero_recordes = 10
 arquivo_recorde = "recorde.txt"
-nome = 'nome'
-pontuacao = 'pontuacao'
+_nome = 'nome'
+_pontuacao = 'pontuacao'
 sorteadas = []
 l_usadas = []
 l_corretas = []
@@ -38,6 +38,14 @@ def inserir_recorde(nome, pontuacao):
         ranking.insert(posicao, recorde)
         ranking = ranking[:numero_recorde]
         salvar_ranking(ranking)
+        
+def posicao_recorde(ranking, pontuacao): #determina a posição do recorde que vai ser usada pelo verificar_recorde antes de ser inserida
+    posicao = len(ranking)
+    for i in range(len(ranking)):
+        registro = ranking[i]
+        if registro[_pontuacao] < pontuacao:
+            posicao = i
+            break
         
 def carregar_ranking(): #Carregar o ranking do arquivo contendo o mapa dos rankings
     ranking = []
