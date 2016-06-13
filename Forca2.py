@@ -179,15 +179,50 @@ def esconder_palavra(p_escolhida, linhas):
     print(end='\n\n')
     return  palavra_escondida
 
-def um_jogador(palavra, lista, vidas):#incompleto
-    while jogo_completo == False:
-        escolher_palavra(palavra)
+def um_jogador(palavra):#incompleto
+     while jogo_completo == False:
+        escolher_palavra(lista)
         print('Letras já utilizadas:', end=' ') # print das letras utilizadas
         for i in range(0, len(l_usadas)):
             print(l_usadas[i], end=' ')
         print(end='\n\n')
-        
-        esconder_palavra(palavra, linhas)    
+
+        esconder_palavra(palavra, linhas)
+
+
+        pegar_palpite(l_usadas, vidas)
+
+        if palpite in palavra: 
+            letras_corretas.append(palpite)
+            acertoupalavra = True
+            for i in range(len(palavra)):
+                if palavra[i] not in letras_corretas:
+                    acertoupalavra = False
+                    break
+            if acertoupalavra:
+                print("Parabéns! Você ganhou. A Palavra era '", palavra, "'.", sep='')
+                print ("Pressione enter para continuar...", end='\n\n')
+                jogo_completo = True
+            else:
+                print("Letra '", palpite,"' não existe na palavra :(", sep='', end='\n\n')
+                l_erradas.append(palpite)
+                (joao-1)
+            
+                if joao = 0
+                print ("Jogo encerrado. Você perdeu. A palavra era '", palavra,"'.", sep='')
+                print ("Pressione enter para continuar...", end='\n\n')
+                jogo_completo = True
+                p_usadas.append(palavra)
+            if jogo_completo: #Falta implementar a pontuação, falta também salvar a palavra já usada, para não se repita durante eventual continuação
+                if jogar_denovo():
+                    letras_usadas = []
+                    letras_corretas = []
+                    letras_erradas = []
+                    jogo_completo = False
+                    palvra = escolherpalavra(palavra)
+                else:
+                    break
+    return #tem que ver o que vai ser retornado    
 
 def dois_jogadores():
     pass
