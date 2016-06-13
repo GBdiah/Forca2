@@ -46,6 +46,7 @@ def posicao_recorde(ranking, pontuacao): #determina a posição do recorde que v
         if registro[_pontuacao] < pontuacao:
             posicao = i
             break
+    return posicao
         
 def carregar_ranking(): #Carregar o ranking do arquivo contendo o mapa dos rankings
     ranking = []
