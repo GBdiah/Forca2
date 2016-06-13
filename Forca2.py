@@ -7,6 +7,7 @@ numero_recordes = 10
 arquivo_recorde = "recorde.txt"
 nome = 'nome'
 pontuacao = 'pontuacao'
+sorteadas = []
 l_usadas = []
 l_corretas = []
 l_erradas = []
@@ -100,6 +101,13 @@ def letras_usadas(l_usadas): #Recebe o palpite e verifica se a letra já foi usa
 def de_novo(palavra):
     input('Pressione ENTER para continuar...')
     um_jogador(palavra)
+
+def sorteia(lista, sorteadas):
+    while len(sorteadas) < len(lista):
+        indice = random.randint(0, len(lista)-1) 
+        if not(indice in sorteadas):
+            sorteadas.append(indice)
+        return (palavra)
     
 
     
@@ -149,7 +157,7 @@ def palavra_valida(receber_palavra):
 def receber_palavra(string):
    pass
    
-#--------------------------------Jogo------------------------------------------#
+#--------------------------------FUNÇÕES------------------------------------------#
 
 sair = False
 while (not sair):
