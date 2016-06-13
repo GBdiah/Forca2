@@ -100,13 +100,13 @@ def letras_usadas(l_usadas): #Recebe o palpite e verifica se a letra já foi usa
         palpite = input()
         if len(palpite) != 1:
             print('Oi? Isso não é uma letra.', end='\n\n')
-        elif palpite not in 'abdcefgijklmnopqrstuvwyz':
+        elif palpite not in 'abdcefgijklmnopqrstuvwyzx':
             print('Oi? Isso não é uma letra.', end='\n\n')
         elif palpite in l_usadas:
             print("Letra '", palpite,"' já utilizada. Tente Outra.", sep='', end='\n\n')
         else:
             l_usadas.append(palpite)
-            return palpite
+        return palpite
             
 def de_novo(palavra):
     input('Pressione ENTER para continuar...')
