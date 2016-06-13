@@ -149,7 +149,7 @@ def palavra_valida(receber_palavra):
 def receber_palavra(string):
    pass
    
-#--------------------------------FUNÇÕES------------------------------------------#
+#--------------------------------Jogo------------------------------------------#
 
 sair = False
 while (not sair):
