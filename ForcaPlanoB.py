@@ -232,8 +232,9 @@ while (not sair):
                     joao = vidas
                     lista = lista_facil
                     jogo_completo = False
+                    palavra = sorteia()
                     while jogo_completo == False:
-                        palavra = sorteia()
+                        
                         print('Letras já utilizadas:', end=' ') # print das letras utilizadas
                         for i in range(0, len(l_usadas)):
                             print(l_usadas[i], end=' ')
@@ -280,9 +281,7 @@ while (not sair):
                             l_erradas = []
                             jogo_completo = False
                             palavra = sorteia()
-                        else:
-                            break
-                        
+
                 elif opcao == 2:
                     vidas = 3
                     lista = lista_dificil
