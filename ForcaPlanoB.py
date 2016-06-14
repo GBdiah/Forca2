@@ -133,19 +133,24 @@ def menu_dificuldade():#Leia comentário nova_partida
 
     
 def letras_usadas(l_usadas): #Recebe o palpite e verifica se a letra já foi usado, não remove vidas, nem autentica se o palpite é correto, só verifica se ele não foi utilizado
+    
     while True:
         
-        print('Entre uma letra (0 para sair).', joao, ' tentativas restantes')
+        print('Entre uma letra (0 para sair).', joao, ' tentativas restantes.')
         palpite = input('> ')
         print ()
         while palpite in l_usadas:
             print ("Letra '",palpite ,"' já utilizada. Tente Outra.", sep='', end='\n\n')
             print ('Entre uma letra (0 para sair).', (joao), 'tentativas restantes.')
-            palpite = input ('> ')
+            palpite = (str(input('> ')))
             print()
+
+        
+        
         if len(palpite) != 1:
             print('Oi? Isso não é uma letra.', end='\n\n')
-        elif palpite not in 'abdcefghijklmnopqrstuvwyzx':
+        
+        elif palpite not in 'abcdefghijklmnopqrstuvwxyzçôóõíé':
             print('Oi? Isso não é uma letra.', end='\n\n')
         elif palpite in l_usadas:
             print("Letra '", palpite,"' já utilizada. Tente Outra.", sep='', end='\n\n')
@@ -229,37 +234,45 @@ while (not sair):
 
                         palpite = letras_usadas(l_usadas)
 
-                        if palpite in palavra: 
+                        if palpite in palavra:
+                            print("Boa! A letra '", palpite, "' existe na palavra :)", sep='', end='\n\n')
                             l_corretas.append(palpite)
                             acertoupalavra = True
                             for i in range(len(palavra)):
                                 if palavra[i] not in l_corretas:
                                     acertoupalavra = False
                                     break
+                        if palpite == ('0'):
+                            break##VERIFICAR PONTUAÇÃO E ADICIONAR NO RANKING
+                        
                             if acertoupalavra:
                                 print("Parabéns! Você ganhou. A Palavra era '", palavra, "'.", sep='')
                                 print ("Pressione enter para continuar...", end='\n\n')
                                 jogo_completo = True
-                            else:
-                                print("Letra '", palpite,"' não existe na palavra :(", sep='', end='\n\n')
-                                l_erradas.append(palpite)
-                                joao = joao - 1
+
+                        elif palpite not in l_corretas: #Letras erradas para a contagem da derrota já q vidas por algum motivo é imutável para mim
+                            if palpite in 'abcdefghijklmnopqrstuvwxyzçôóõíé': 
+                                if palpite not in letras_erradas:
+                                    print("Letra '", palpite,"' não existe na palavra :(", sep='', end='\n\n')
+                                    l_erradas.append(palpite)
+                                    joao = joao - 1
                             
-                                if joao == 0:
-                                    print ("Jogo encerrado. Você perdeu. A palavra era '", palavra,"'.", sep='')
-                                    print ("Pressione enter para continuar...", end='\n\n')
-                                    input('')
-                                    jogo_completo = True
+                        if joao == 0:
+                            print ("Jogo encerrado. Você perdeu. A palavra era '", palavra,"'.", sep='')
+                            print ("Pressione enter para continuar...", end='\n\n')
+                            input('')
+                            jogo_completo = True
                                     
                                     
-                            if jogo_completo == True: 
-                                l_usadas = []
-                                l_corretas = []
-                                l_erradas = []
-                                jogo_completo = False
-                                palavra = sorteia()
-                            else:
-                                break
+                        elif jogo_completo == True: 
+                            l_usadas = []
+                            l_corretas = []
+                            l_erradas = []
+                            jogo_completo = False
+                            palavra = sorteia()
+                        else:
+                            break
+                        
                 elif opcao == 2:
                     vidas = 3
                     lista = lista_dificil
@@ -359,4 +372,3 @@ while (not sair):
         ranking()
     elif opcao == 4:
         sair = True
-
