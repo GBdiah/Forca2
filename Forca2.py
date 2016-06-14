@@ -12,9 +12,8 @@ l_usadas = []
 l_corretas = []
 l_erradas = []
 p_usadas = []
-linhas = '_' * len(palavra_escolhida)
 palavra = ''
-
+linhas = '_' * len(palavra)
 lista_facil = ['melhor', 'grande', 'claro', 'azul', 'vermelho', 'preto', 'branco', 'casa', 'tempo', 'felicidade', 'bondade', 'vida',
 'caneta', 'cavalo', 'trem', 'golpe', 'cosmos']
 
@@ -119,17 +118,16 @@ def nova_partida():
         print('DESCULPE, A OPÇÃO DESEJADA É INVÁLIDADA.')
 
 def menu_dificuldade():#Leia comentário nova_partida
-    facil = 'F'
-    dificil = 'D'
+    
     print('---------------------------')
     print('         DIFICULDADE       ')
     print('---------------------------')
-    print('F- FÁCIL')
-    print('D- DIFÍCIL')
+    print('1- FÁCIL')
+    print('2- DIFÍCIL')
 
     while True:
-        opcao = str(input('OPÇÃO DESEJADA: '))
-        if opcao == facil and opcao == dificil:
+        opcao = int(input('OPÇÃO DESEJADA: '))
+        if opcao >= 0 and opcao <= 2:
             return opcao        
 
 
@@ -181,8 +179,9 @@ def esconder_palavra(p_escolhida, linhas):
     print(end='\n\n')
     return  palavra_escondida
 
-def um_jogador(palavra):#incompleto
-     while jogo_completo == False:
+def um_jogador(l_usadas, palpite, palavra, acertoupalavra ):#incompleto
+    jogo_completo = True
+    while (not jogo_completo):
         escolher_palavra(lista)
         print('Letras já utilizadas:', end=' ') # print das letras utilizadas
         for i in range(0, len(l_usadas)):
@@ -210,12 +209,12 @@ def um_jogador(palavra):#incompleto
                 l_erradas.append(palpite)
                 (joao-1)
             
-                if joao = 0
-                print ("Jogo encerrado. Você perdeu. A palavra era '", palavra,"'.", sep='')
-                print ("Pressione enter para continuar...", end='\n\n')
-                jogo_completo = True
-                p_usadas.append(palavra)
-            if jogo_completo: #Falta implementar a pontuação, falta também salvar a palavra já usada, para não se repita durante eventual continuação
+                if joao == 0:
+                    print ("Jogo encerrado. Você perdeu. A palavra era '", palavra,"'.", sep='')
+                    print ("Pressione enter para continuar...", end='\n\n')
+                    jogo_completo = True
+                    p_usadas.append(palavra)
+            if jogo_completo == True: 
                 if jogar_denovo():
                     letras_usadas = []
                     letras_corretas = []
@@ -223,8 +222,8 @@ def um_jogador(palavra):#incompleto
                     jogo_completo = False
                     palvra = escolherpalavra(palavra)
                 else:
-                    break
-    return #tem que ver o que vai ser retornado // Imagino que a pontuacao seria o retorno dessa funcao n?    
+                    sys.exit()
+       
 
 def dois_jogadores():
     pass
@@ -254,14 +253,14 @@ while (not sair):
             opcao = nova_partida()
             if opcao == 1:
                 opcao = menu_dificuldade()
-                if opcao == 'F':
+                if opcao == 1:
                     vidas = 5
                     lista = lista_facil
                     um_jogador()
-                elif opcao == 'D':
+                elif opcao == 2:
                     vidas = 3
                     lista = lista_dificil
-                    um_jogador()
+                    opcao = um_jogador()
             if opcao == 3:
                 voltar = True
     elif opcao == 2:
@@ -270,37 +269,3 @@ while (not sair):
         ranking()
     elif opcao == 4:
         sair = True
-
-if palpite in palavra:
-    '''
-    IMPORTANTE, ISSO É A BASE DO JOGO SINGLEPLAYER IMAGINO Q PODE
-    SER APROVEITADO EM PARTE PRO MULTI!!!Verifica se o palpite
-    está na palavra, falta implementar a parte em que mostra as 
-    letras já utilizadas e a palavra em sí. PS. criei a varíavel joao só pela zuera
-    '''
-    letras_corretas.append(palpite)
-    acertoupalavra = True
-    for i in range(len(palavra)):
-        if palavra[i] not in letras_corretas:
-            acertoupalavra = False
-            break
-        if acertoupalavra:
-            print('Parabéns! Você ganhou. A palavra era ', palavra,'. Pressione enter para continuar...')
-            jogo_completo = True
-        else:
-            print('Letra ', palpite, 'não existe na palavra :(')
-            letras_erradas.append(palpite)
-            (joao-1)
-            
-            if joao = 0
-            print('Jogo encerrado. Você perdeu. A palavra era ', palavra,'.Pressione enter para continuar...')
-            jogo_completo = True
-    if jogo_completo: #Falta implementar a pontuação, falta também salvar a palavra já usada, para não se repita durante eventual continuação
-        if jogar_denovo():
-            letras_usadas = []
-            letras_corretas = []
-            letras_erradas = []
-            jogo_completo = False
-            palvra = escolherpalavra(palavra)
-        else:
-            break
