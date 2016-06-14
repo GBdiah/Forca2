@@ -2,6 +2,7 @@ import pickle
 import random
 import os
 import sys
+import ranking
 
 numero_recordes = 10
 arquivo_recorde = "recorde.txt"
@@ -21,6 +22,15 @@ lista_dificil = ['procrastinar', 'prolegomenos', 'vicissitudes', 'pernostico', '
 'chistoso', 'acrimonia', 'combustivel', 'concurso', 'protesto', 'governo', 'paquiderme', 'tamandare']
 
 #--------------------------------FUNÇÕES------------------------------------------#
+def fill(word, size):
+    strlen = len(word)
+    newstr = word
+
+    for idx in range(size - strlen):
+        newstr += " "
+
+    return newstr
+    
 def verificar_recorde(pontuacao): #verifica a pontuação do cara e onde ele será inserido no ranking
     posicao_recorde = 0
     if pontuacao > 0:
