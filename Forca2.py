@@ -194,7 +194,8 @@ def um_jogador(l_usadas, palpite, palavra, acertoupalavra ):#incompleto
         pegar_palpite(l_usadas, vidas)
 
         if palpite in palavra: 
-            l.append(palpite)
+            print("Boa! A letra '", palpite, "' existe na palavra :)", sep='', end='\n\n')
+            l_corretas.append(palpite)
             acertoupalavra = True
             for i in range(len(palavra)):
                 if palavra[i] not in l_corretas:
