@@ -12,8 +12,8 @@ sorteadas = []
 l_usadas = []
 l_corretas = []
 l_erradas = []
-palavra = ''
-palpite = ''
+
+
 
 lista_facil = ['melhor', 'grande', 'claro', 'azul', 'vermelho', 'preto', 'branco', 'casa', 'tempo', 'felicidade', 'bondade', 'vida',
 'caneta', 'cavalo', 'trem', 'golpe', 'cosmos']
@@ -97,13 +97,12 @@ def menu():
     print('       JOGO DA FORCA       ')
     print('---------------------------')
     print('1- INICIAR NOVA PARTIDA')
-    print('2- CONTINUAR PARTIDA')
-    print('3- RANKING GERAL')
-    print('4- SAIR DO JOGO')
+    print('2- RANKING GERAL')
+    print('3- SAIR DO JOGO')
 
     while True:
         opcao = int(input('OPÇÃO DESEJADA: '))
-        if opcao >= 0 and opcao <= 4:
+        if opcao >= 0 and opcao <= 3:
             return opcao
         print('DESCULPE, A OPÇÃO DESEJADA É INVÁLIDADA.')
         
@@ -172,7 +171,7 @@ def letras_usadas(l_usadas): #Recebe o palpite e verifica se a letra já foi usa
     
 
 def sorteia():
-    while len(sorteadas) < len(lista):
+    while len(lista) > 0:
         palavra = lista[random.randint(0, len(lista)-1)] 
         if not(palavra in sorteadas):
             sorteadas.append(palavra)
@@ -245,6 +244,11 @@ while (not sair):
 
                         palpite = letras_usadas(l_usadas)
 
+                        if palpite == ('0'):
+                            break #VERIFICAR PONTUAÇÃO E ADICIONAR NO RANKING
+
+
+
                         if palpite in palavra:
                             print("Boa! A letra '", palpite, "' existe na palavra :)", sep='', end='\n\n')
                             l_corretas.append(palpite)
@@ -253,13 +257,13 @@ while (not sair):
                                 if palavra[i] not in l_corretas:
                                     acertoupalavra = False
                                     break
-                        if palpite == ('0'):
-                            break##VERIFICAR PONTUAÇÃO E ADICIONAR NO RANKING
-                        
+                                                
                             if acertoupalavra:
                                 print("Parabéns! Você ganhou. A Palavra era '", palavra, "'.", sep='')
                                 print ("Pressione enter para continuar...", end='\n\n')
+                                input()
                                 jogo_completo = True
+
 
                         elif palpite not in l_corretas: #Letras erradas para a contagem da derrota já q vidas por algum motivo é imutável para mim
                             if palpite in 'abcdefghijklmnopqrstuvwxyzçôóõíé': 
@@ -272,16 +276,25 @@ while (not sair):
                             print ("Jogo encerrado. Você perdeu. A palavra era '", palavra,"'.", sep='')
                             print ("Pressione enter para continuar...", end='\n\n')
                             input('')
-                            jogo_completo = True
-                                    
-                                    
-                        elif jogo_completo == True: 
                             l_usadas = []
                             l_corretas = []
                             l_erradas = []
+                            sorteadas = []
+                            voltar = True
+                            break
+                                    
+                                    
+                        if jogo_completo == True:
+                            lista.remove(palavra)
+                            l_usadas = []
+                            l_corretas = []
+                            l_erradas = []
+                            joao = 5
                             jogo_completo = False
                             palavra = sorteia()
-
+                        
+                            
+                        
                 elif opcao == 2:
                     vidas = 3
                     lista = lista_dificil
@@ -375,9 +388,8 @@ while (not sair):
                                 break
             if opcao == 3:
                 voltar = True
+    
     elif opcao == 2:
-        cont_partida()
-    elif opcao == 3:
         print("\n")
         print("--------------------")
         print("RANKING DE PONTUAÇÃO")
@@ -403,5 +415,5 @@ while (not sair):
             input()
 
         print("\n")
-    elif opcao == 4:
+    elif opcao == 3:
         sair = True
