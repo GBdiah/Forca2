@@ -229,7 +229,7 @@ while (not sair):
                     limpar_tela()
                     vidas = 5
                     joao = vidas
-                    lista = lista_facil
+                    lista = list(lista_facil)
                     jogo_completo = False
                     palavra = sorteia()
                     while jogo_completo == False:
@@ -292,6 +292,13 @@ while (not sair):
                             joao = 5
                             jogo_completo = False
                             palavra = sorteia()
+                            if len(lista) == 0:
+                                print('Não existem mais palavras para serem sorteadas. :(')
+                                print('Pressione enter para continuar...')
+                                input()
+                                
+                                voltar = True
+                                break
                         
                             
                         
