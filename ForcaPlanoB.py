@@ -262,7 +262,7 @@ while (not sair):
 
                         elif palpite not in l_corretas: #Letras erradas para a contagem da derrota já q vidas por algum motivo é imutável para mim
                             if palpite in 'abcdefghijklmnopqrstuvwxyzçôóõíé': 
-                                if palpite not in letras_erradas:
+                                if palpite not in l_erradas:
                                     print("Letra '", palpite,"' não existe na palavra :(", sep='', end='\n\n')
                                     l_erradas.append(palpite)
                                     joao = joao - 1
