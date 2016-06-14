@@ -135,7 +135,7 @@ def menu_dificuldade():#Leia comentário nova_partida
 def letras_usadas(l_usadas): #Recebe o palpite e verifica se a letra já foi usado, não remove vidas, nem autentica se o palpite é correto, só verifica se ele não foi utilizado
     while True:
         print('Entre uma letra (0 para sair).', vidas, ' tentativas restantes')
-        palpite = input()
+        palpite = input('> ')
         if len(palpite) != 1:
             print('Oi? Isso não é uma letra.', end='\n\n')
         elif palpite not in 'abdcefgijklmnopqrstuvwyzx':
@@ -187,17 +187,17 @@ def um_jogador(l_usadas, palpite, palavra, acertoupalavra ):#incompleto
         for i in range(0, len(l_usadas)):
             print(l_usadas[i], end=' ')
         print(end='\n\n')
-
+        
         esconder_palavra(palavra, linhas)
 
 
         pegar_palpite(l_usadas, vidas)
 
         if palpite in palavra: 
-            letras_corretas.append(palpite)
+            l.append(palpite)
             acertoupalavra = True
             for i in range(len(palavra)):
-                if palavra[i] not in letras_corretas:
+                if palavra[i] not in l_corretas:
                     acertoupalavra = False
                     break
             if acertoupalavra:
@@ -207,7 +207,7 @@ def um_jogador(l_usadas, palpite, palavra, acertoupalavra ):#incompleto
             else:
                 print("Letra '", palpite,"' não existe na palavra :(", sep='', end='\n\n')
                 l_erradas.append(palpite)
-                (joao-1)
+                joao = joao - 1
             
                 if joao == 0:
                     print ("Jogo encerrado. Você perdeu. A palavra era '", palavra,"'.", sep='')
