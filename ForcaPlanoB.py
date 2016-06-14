@@ -369,6 +369,30 @@ while (not sair):
     elif opcao == 2:
         cont_partida()
     elif opcao == 3:
-        ranking()
+        print("\n")
+        print("--------------------")
+        print("RANKING DE PONTUAÇÃO")
+        print("--------------------")
+        recordes = ranking.obter_ranking()
+
+        if len(recordes) > 0:
+
+            for idx in range(len(recordes)):
+                recorde = recordes[idx]
+                nome = ranking.obter_nome(recorde)
+                pont = str(ranking.obter_pontuacao(recorde))
+
+                print("#%02d " % (idx+1), end="")
+                print(fill(nome, 30), end="")
+                print("%8s" % pont)
+            print()
+            print('Pressione enter para continuar...')
+            input()
+        else:
+            print('Nenhum registro a exibir.', end='\n\n')
+            print('Pressione enter para continuar...')
+            input()
+
+        print("\n")
     elif opcao == 4:
         sair = True
