@@ -93,10 +93,16 @@ def __salvar_ranking(ranking):
     except:
         pass
 
-    
-def jogar_denovo(): #Função de jogar denovo, como já dito lá embaixo, falta ainda implementar a pontuação para carregar pros próximos jogos
-    input('')
+def __gerar_ranking():
+    num_recorde = verificar_recorde(pontuacao)
+    if num_recorde > 0:
+        print("Parabéns! Você quebrou o recorde de número " + str(num_recorde) + "!")
+        nome = input('Digite seu nome: ')
 
+        inserir_recorde(nome, pontuacao)
+    else:
+        print("Que pena! Você não quebrou o recorde.")
+        input()
 
     
 def limpar_tela():
@@ -192,14 +198,7 @@ def sorteia():
         return palavra
     
 
-    
-def cont_partida():
-    pass
-
 def rank_geral():
-    pass
-
-def sair(opcao):
     pass
 
 
@@ -262,7 +261,8 @@ while (not sair):
                         palpite = letras_usadas(l_usadas)
 
                         if palpite == ('0'):
-                            break #VERIFICAR PONTUAÇÃO E ADICIONAR NO RANKING
+                            __gerar_ranking()
+                            break
 
 
 
@@ -279,7 +279,7 @@ while (not sair):
                                 print("Parabéns! Você ganhou. A Palavra era '", palavra, "'.", sep='')
                                 print ("Pressione enter para continuar...", end='\n\n')
                                 input()
-                                pontuacao = pontuacao + (1000 + (joao * 100))
+                                pontuacao = pontuacao + (1000 + (joao * 100))                                
                                 jogo_completo = True
 
 
@@ -294,6 +294,7 @@ while (not sair):
                             print ("Jogo encerrado. Você perdeu. A palavra era '", palavra,"'.", sep='')
                             print ("Pressione enter para continuar...", end='\n\n')
                             input('')
+                            __gerar_ranking()
                             l_usadas = []
                             l_corretas = []
                             l_erradas = []
@@ -311,9 +312,10 @@ while (not sair):
                             jogo_completo = False
                             palavra = sorteia()
                             if len(lista) == 0:
-                                print('Não existem mais palavras para serem sorteadas. :(')
+                                print('Não existem mais palavras para serem sorteadas :(')
                                 print('Pressione enter para continuar...')
                                 input()
+                                __gerar_ranking()
                                 
                                 voltar = True
                                 break
@@ -339,7 +341,8 @@ while (not sair):
                         palpite = letras_usadas(l_usadas)
 
                         if palpite == ('0'):
-                            break #VERIFICAR PONTUAÇÃO E ADICIONAR NO RANKING
+                            __gerar_ranking()
+                            break 
 
 
 
@@ -371,6 +374,7 @@ while (not sair):
                             print ("Jogo encerrado. Você perdeu. A palavra era '", palavra,"'.", sep='')
                             print ("Pressione enter para continuar...", end='\n\n')
                             input('')
+                            __gerar_ranking()
                             l_usadas = []
                             l_corretas = []
                             l_erradas = []
@@ -391,9 +395,15 @@ while (not sair):
                                 print('Não existem mais palavras para serem sorteadas :(')
                                 print('Pressione enter para continuar...')
                                 input()
-                                
+                                __gerar_ranking()
                                 voltar = True
                                 break
+    
+            if opcao == 2:
+                pass
+            
+            if opcao == 3:
+                voltar = True
     
     elif opcao == 2:
         print("\n")
