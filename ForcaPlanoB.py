@@ -31,20 +31,20 @@ def fill(word, size):
     return newstr
     
 def obter_nome(recorde):
-    return recorde[__NOME]
+    return recorde[_nome]
 
 def obter_pontuacao(recorde):
-    return recorde[__PONTUACAO]
+    return recorde[_pontuacao]
 
 def inserir_recorde(nome, pontuacao):
     ranking = __carregar_ranking()
 
     posicao = __posicao_recorde(ranking, pontuacao)
-    if posicao < QTD_RECORDES:
-        recorde = {__NOME:nome, __PONTUACAO:pontuacao}
+    if posicao < numero_recordes:
+        recorde = {_nome:nome, _pontuacao:pontuacao}
 
         ranking.insert(posicao, recorde)
-        ranking = ranking[:QTD_RECORDES]
+        ranking = ranking[:numero_recordes]
         __salvar_ranking(ranking)
 
 def verificar_recorde(pontuacao):
@@ -54,7 +54,7 @@ def verificar_recorde(pontuacao):
         ranking = __carregar_ranking()
 
         posicao = __posicao_recorde(ranking, pontuacao)
-        if posicao < QTD_RECORDES:
+        if posicao < numero_recordes:
             pos_recorde = posicao + 1
 
     return pos_recorde
@@ -67,7 +67,7 @@ def __posicao_recorde(ranking, pontuacao):
 
     for idx in range(len(ranking)):
         reg = ranking[idx]
-        if reg[__PONTUACAO] < pontuacao:
+        if reg[_pontuacao] < pontuacao:
             posicao = idx
             break
 
@@ -77,7 +77,7 @@ def __carregar_ranking():
     ranking = []
 
     try:
-        arq = open(ARQUIVO_RECORDE, "rb")
+        arq = open(arquivo_recorde, "rb")
         ranking = pickle.load(arq)
         arq.close()
     except:
@@ -87,7 +87,7 @@ def __carregar_ranking():
 
 def __salvar_ranking(ranking):
     try:
-        arq = open(ARQUIVO_RECORDE, "wb")
+        arq = open(arquivo_recorde, "wb")
         pickle.dump(ranking, arq)
         arq.close()
     except:
