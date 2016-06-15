@@ -4,10 +4,10 @@ import os
 import sys
 import ranking
 
-numero_recordes = 10
+QTD_RECORDES = 10
 arquivo_recorde = "recorde.txt"
-_nome = 'nome'
-_pontuacao = 'pontuacao'
+__NOME = 'nome'
+__PONTUACAO = 'pontuacao'
 sorteadas = []
 l_usadas = []
 l_corretas = []
@@ -416,14 +416,14 @@ while (not sair):
         print("--------------------")
         print("RANKING DE PONTUAÇÃO")
         print("--------------------")
-        recordes = ranking.obter_ranking()
+        recordes = obter_ranking()
 
         if len(recordes) > 0:
 
             for idx in range(len(recordes)):
                 recorde = recordes[idx]
-                nome = ranking.obter_nome(recorde)
-                pont = str(ranking.obter_pontuacao(recorde))
+                nome = obter_nome(recorde)
+                pont = str(obter_pontuacao(recorde))
 
                 print("#%02d " % (idx+1), end="")
                 print(fill(nome, 30), end="")
