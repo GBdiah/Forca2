@@ -2,7 +2,6 @@ import pickle
 import random
 import os
 import sys
-import ranking
 
 QTD_RECORDES = 10
 arquivo_recorde = "recorde.txt"
@@ -247,6 +246,7 @@ while (not sair):
                     lista = list(lista_facil)
                     jogo_completo = False
                     palavra = sorteia()
+                    pontuacao = 0
                     while jogo_completo == False:
                         
                         print('Letras já utilizadas:', end=' ') # print das letras utilizadas
@@ -277,6 +277,7 @@ while (not sair):
                                 print("Parabéns! Você ganhou. A Palavra era '", palavra, "'.", sep='')
                                 print ("Pressione enter para continuar...", end='\n\n')
                                 input()
+                                pontuacao = pontuacao + (1000 + (joao * 100))
                                 jogo_completo = True
 
 
@@ -314,102 +315,83 @@ while (not sair):
                                 
                                 voltar = True
                                 break
-                        
-                            
-                        
+                  
                 elif opcao == 2:
+                    limpar_tela()
                     vidas = 3
-                    lista = lista_dificil
                     joao = vidas
+                    lista = list(lista_dificil)
                     jogo_completo = False
-                    letras_erradas = []
-                    letras_corretas = []
-                    letras_usadas = []
-                    palavra = lista[random.randint(0,len(lista)-1)]
-                    linhas = '_' * len(palavra)
+                    palavra = sorteia()
+                    pontuacao = 0
                     while jogo_completo == False:
-
+                        
                         print('Letras já utilizadas:', end=' ') # print das letras utilizadas
-                        for i in range(0, len(letras_usadas)):
-                            print(letras_usadas[i], end=' ')
-                        print(end='\n\n')
-             
-                        
-                        for i in range(len(palavra)): # print dos underlines e das letras corretas
-                            if palavra[i] in letras_corretas:
-                                linhas = linhas[:i] + palavra[i] + linhas[i+1:]
-                        print('Palavra:', end=' ')
-                        for letra in linhas:
-                            print(letra, end=' ')
+                        for i in range(0, len(l_usadas)):
+                            print(l_usadas[i], end=' ')
                         print(end='\n\n')
 
-                        print ('Entre uma letra (0 para sair).', (joao-len(letras_erradas)), 'tentativas restantes.')
-                        palpite = input ('> ')
-                        print()
-                        
-                        while palpite in letras_usadas:
-                            print ("Letra '",palpite ,"' já utilizada. Tente Outra.", sep='', end='\n\n')
-                            print ('Entre uma letra (0 para sair).', (joao-len(letras_erradas)), 'tentativas restantes.')
-                            palpite = input ('> ')
-                            print()
-                          
-                        
-                          
-                        if palpite == '0':
-                            break
+                        esconder_palavra(l_corretas, palavra)
 
-                        if len(palpite)!= 1:
-                            print ('Oi? Isso não é só uma letra.', end='\n\n')
-                            
-                        elif palpite in letras_erradas:
-                            print ("Letra '",palpite ,"' já utilizada. Tente Outra.", sep='', end='\n\n')
-                        elif palpite not in 'abcdefghijklmnopqrstuvwxyzçôóõíé':
-                            print ('Oi? Isso não é uma letra.', end='\n\n')
-                            
-                        elif palpite in letras_usadas:
-                            print ("Letra '",palpite ,"' já utilizada. Tente Outra.", sep='', end='\n\n')
-                        else:
-                            letras_usadas.append(palpite)
-                            if palpite in palavra: # verificação das letras na palavra
-                                print("Boa! A letra '", palpite, "' existe na palavra :)", sep='', end='\n\n')
-                                letras_corretas.append(palpite)
-                                
-                                palavra_completa = True # Verificar se o jogador ganhou
-                                for (i) in range (len(palavra)):
-                                    if palavra[i] not in letras_corretas:
-                                        palavra_completa = False
-                                        break
-                                if palavra_completa:
-                                    print("Parabéns! Você ganhou. A Palavra era '", palavra, "'.", sep='')
-                                    print ("Pressione enter para continuar...", end='\n\n')
-                                    jogo_completo = True
-                                        
-                        if palpite not in letras_corretas: #Letras erradas para a contagem da derrota já q vidas por algum motivo é imutável para mim
+
+                        palpite = letras_usadas(l_usadas)
+
+                        if palpite == ('0'):
+                            break #VERIFICAR PONTUAÇÃO E ADICIONAR NO RANKING
+
+
+
+                        if palpite in palavra:
+                            print("Boa! A letra '", palpite, "' existe na palavra :)", sep='', end='\n\n')
+                            l_corretas.append(palpite)
+                            acertoupalavra = True
+                            for i in range(len(palavra)):
+                                if palavra[i] not in l_corretas:
+                                    acertoupalavra = False
+                                    break
+                                                
+                            if acertoupalavra:
+                                print("Parabéns! Você ganhou. A Palavra era '", palavra, "'.", sep='')
+                                print ("Pressione enter para continuar...", end='\n\n')
+                                input()
+                                pontuacao = pontuacao + (2000 + (joao * 100))                                
+                                jogo_completo = True
+
+
+                        elif palpite not in l_corretas: #Letras erradas para a contagem da derrota já q vidas por algum motivo é imutável para mim
                             if palpite in 'abcdefghijklmnopqrstuvwxyzçôóõíé': 
-                                if palpite not in letras_erradas:
+                                if palpite not in l_erradas:
                                     print("Letra '", palpite,"' não existe na palavra :(", sep='', end='\n\n')
-                                    letras_erradas.append(palpite)
-                                    
-                        if len(letras_erradas) == joao :
+                                    l_erradas.append(palpite)
+                                    joao = joao - 1
+                            
+                        if joao == 0:
                             print ("Jogo encerrado. Você perdeu. A palavra era '", palavra,"'.", sep='')
                             print ("Pressione enter para continuar...", end='\n\n')
-                            jogo_completo = True
-                            
-                        if jogo_completo:
-                            jogar_denovo = input ('')
-                            print()
-                            if jogar_denovo == (''):
-                                jogo_completo = False
-                                joao = vidas
-                                letras_erradas = []
-                                letras_corretas = []
-                                letras_usadas = []
-                                palavra = lista[random.randint(0,len(lista)-1)]
-                                linhas = '_' * len(palavra)
-                            else:
+                            input('')
+                            l_usadas = []
+                            l_corretas = []
+                            l_erradas = []
+                            sorteadas = []
+                            voltar = True
+                            break
+                                    
+                                    
+                        if jogo_completo == True:
+                            lista.remove(palavra)
+                            l_usadas = []
+                            l_corretas = []
+                            l_erradas = []
+                            joao = 3
+                            jogo_completo = False
+                            palavra = sorteia()
+                            if len(lista) == 0:
+                                print('Não existem mais palavras para serem sorteadas :(')
+                                print('Pressione enter para continuar...')
+                                input()
+                                
+                                voltar = True
                                 break
-            if opcao == 3:
-                voltar = True
     
     elif opcao == 2:
         print("\n")
