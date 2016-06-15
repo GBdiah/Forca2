@@ -31,54 +31,69 @@ def fill(word, size):
 
     return newstr
     
-def verificar_recorde(pontuacao): #verifica a pontuação do cara e onde ele será inserido no ranking
-    posicao_recorde = 0
-    if pontuacao > 0:
-        ranking = carregar_ranking()
-        posicao = posicao_recorde(ranking, pontuacao)
-        if posicao < numero_recordes:
-            posicao_recorde = posicao + 1
-        
+def obter_nome(recorde):
+    return recorde[__NOME]
+
+def obter_pontuacao(recorde):
+    return recorde[__PONTUACAO]
+
 def inserir_recorde(nome, pontuacao):
-    ranking = carregar_ranking()
-    
-    posicao = posicao_recorde(ranking, pontuacao)
-    if posicao < numero_recorde:
-        recorde = {_nome:nome, _pontuacao:pontuacao}
+    ranking = __carregar_ranking()
+
+    posicao = __posicao_recorde(ranking, pontuacao)
+    if posicao < QTD_RECORDES:
+        recorde = {__NOME:nome, __PONTUACAO:pontuacao}
+
         ranking.insert(posicao, recorde)
-        ranking = ranking[:numero_recorde]
-        salvar_ranking(ranking)
-        
-def posicao_recorde(ranking, pontuacao): #determina a posição do recorde que vai ser usada pelo verificar_recorde antes de ser inserida
+        ranking = ranking[:QTD_RECORDES]
+        __salvar_ranking(ranking)
+
+def verificar_recorde(pontuacao):
+    pos_recorde = 0
+
+    if pontuacao > 0:
+        ranking = __carregar_ranking()
+
+        posicao = __posicao_recorde(ranking, pontuacao)
+        if posicao < QTD_RECORDES:
+            pos_recorde = posicao + 1
+
+    return pos_recorde
+
+def obter_ranking():
+    return __carregar_ranking()
+
+def __posicao_recorde(ranking, pontuacao):
     posicao = len(ranking)
-    for i in range(len(ranking)):
-        registro = ranking[i]
-        if registro[_pontuacao] < pontuacao:
-            posicao = i
+
+    for idx in range(len(ranking)):
+        reg = ranking[idx]
+        if reg[__PONTUACAO] < pontuacao:
+            posicao = idx
             break
+
     return posicao
-        
-def carregar_ranking(): #Carregar o ranking do arquivo contendo o mapa dos rankings
+
+def __carregar_ranking():
     ranking = []
-    
+
     try:
-        arquivo = open(arquivo_recorde, "rb")
+        arq = open(ARQUIVO_RECORDE, "rb")
         ranking = pickle.load(arq)
-        arquivo.close()
+        arq.close()
     except:
         pass
+
     return ranking
-    
-def salvar_ranking():
+
+def __salvar_ranking(ranking):
     try:
-        arquivo = open(arquivo_recorde, "wb")
-        pickle.dump(ranking, arquivo)
-        arquivo.close()
+        arq = open(ARQUIVO_RECORDE, "wb")
+        pickle.dump(ranking, arq)
+        arq.close()
     except:
         pass
-    
-def obter_ranking(): # A ser utilizado quando o usuário quiser acessar direto do menu, falta dar o print com o menu em sí
-    return carregar_ranking
+
     
 def jogar_denovo(): #Função de jogar denovo, como já dito lá embaixo, falta ainda implementar a pontuação para carregar pros próximos jogos
     input('')
