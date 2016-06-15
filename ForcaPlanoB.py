@@ -214,19 +214,6 @@ def esconder_palavra(l_corretas, palavra):
     return linhas
 
 
-'''
---------------DOIS JOGADORES ----------------
-'''       
-
-def dois_jogadores():
-    pass
-
-
-
-def receber_palavra(string):
-    print('Entre com a palavra que deve ser utilizada nessa partida.')
-    palavra = input('>')
-    return palavra
    
 #--------------------------------FUNÇÕES------------------------------------------#
 
@@ -404,7 +391,7 @@ while (not sair):
                 lista = []
                 vidas = 5
                 joao = vidas
-                print('Digite a palavra para desafiar seu amigo!')
+                print('Entre com a palavra que deverá ser usada nessa partida!')
                 lista.append(input('>'))
                 jogo_completo = False
                 palavra = sorteia()
@@ -464,7 +451,7 @@ while (not sair):
                         l_corretas = []
                         l_erradas = []
                         joao = 5
-                        print('Digite a palavra para desafiar seu amigo!')
+                        print('Entre com a palavra que deverá ser usada nessa partida!')
                         lista.append(input('>'))
                         jogo_completo = False
                         palavra = sorteia()
