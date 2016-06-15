@@ -3,10 +3,10 @@ import random
 import os
 import sys
 
-QTD_RECORDES = 10
+numero_recordes = 10
 arquivo_recorde = "recorde.txt"
-__NOME = 'nome'
-__PONTUACAO = 'pontuacao'
+_nome = 'nome'
+_pontuacao = 'pontuacao'
 sorteadas = []
 l_usadas = []
 l_corretas = []
