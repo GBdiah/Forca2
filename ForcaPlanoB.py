@@ -223,9 +223,9 @@ def dois_jogadores():
 
 
 
-def receber_palavra(string):
-    print('Entre com a palavra que deve ser utilizada nessa partida.')
-    palavra = input('>')
+def receber_palavra():
+    print('Entre com a palavra a ser utilizada nessa partida.')
+    palavra = input('> ')
     return palavra
    
 #--------------------------------FUNÇÕES------------------------------------------#
